@@ -1,0 +1,40 @@
+Here are some git commands which helps you to set up git on your computer for first time.
+
+# Sets up git with you Name
+git config --global user.name "<Your name>"
+
+# Sets up git with your email
+git config --global user.email "<Your email>"
+
+# Makes sure that git output is coloured
+git config --global color.ui auto
+
+# Displays the original state in a conflict
+git config --global merge.conflictstyle diff3
+
+# To view all the git configuration
+git config --list
+
+
+
+
+
+To use a text editor as default for git
+
+# Atom editor setup
+git config --global core.editor "atom --wait"
+
+
+
+#Sublime Text Setup
+git config --global core.editor "'<Path Address to sublime text>' -n -w"
+# for example
+git config --global core.editor "'C:/Program Files/Sublime Text 2/sublime_text.exe' -n -w"
+
+# VSCode Setup
+git config --global core.editor "code --wait"
+
+
+If you have performed all of the above codes successfully on git bash, then now everything should be well set up.
+Enjoy using Git
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
