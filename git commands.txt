@@ -1,0 +1,119 @@
+# git init :  To create a repository on your personal computer.
+# git clone :   To copy existing repository(repo) from somewhere else to your computer.
+# git status :   To check the status of the repository.
+# git show :  Display information about the given commit.
+# git log :  Display information about all existing commits.
+	$ git log --oneline : Show one commit per line (short SHA and commit message only).
+	$ git log --stat : To display the files that have been changed in the commit as well as the number of lines that have been added or deleted.
+	$ git log -p : To display the actual changes made to a file. The flag is --patch which can be shortened to -p.
+	$ git log -p -w : Ignore whitespace changes.
+# git add :  Add files from working directory to the staging index.
+# git commit :  Take file from the staging index and save them in the repository on your personal computer.
+# git diff :  Displays the difference between two versions of a file. It is equivalent to git log -p.
+# git tag : Add tags to a specific commit.
+	$ git tag -a <tag> : Add tag to most recent commit.
+	$ git tag -a <tag> <SHA OF COMMIT> : Add tag to the commit given as the argument.
+	$ -a flag in git tag syntax tells git to create an annotated tag and it is recommended to use -a while adding tag.
+	$ replace <tag> with the tag you want to add to the commit.
+	$ git tag : To verify that tag is added to the commit.
+	$ git log --decorate : To view to which commit tag is added.
+	$ git  tag -d <tag> : To delete the tag.
+# git branch :  Allow multiple line of development.
+	git branch can be used to :
+		- list all branch names in the repository.
+		- create new branches.
+		- delete branches.
+	$ git branch : List out the branch.
+	$ git branch <branch-name> : To create a branch.
+	$ git checkout <branch-name> : To switch to the given branch
+		Running this command will :
+		- remove all files and directories from the working directory that git is tracking. ( Files that git tracks are stored in the repository so nothing is lost.)
+		- go into the repository and pull out all of the files and directories of the commit that the branch points to.
+	$ To know current branch : 
+		- git log --oneline --decorate : HEAD points to the current branch.
+		- git branch : An asterisk will appear next to the name of the active branch.
+	$ To delete branch : git branch -d <branch> : It will delete a branch where everything had been moved to the repository.
+						 git branch -D <branch> : To force delete the branch.
+# git checkout -b <branch-name> : To create a branch and switch to it.
+# git log --oneline --decorate --graph --all :
+	$ --graph flag adds the bullets and lines to the leftmost part of the output. This shows the actual branching that is happening.
+	$ --all flag is what displays all of the branches in the repository.
+
+
+
+# A SMALL NOTE ON MERGING 
+
+
+# Merging : Combining branches together is called branching. The "git merge" command is used to combine git branches.
+	Syntax : git merge <name of the branch to merge in>
+# When a Merge happens git will :
+	- look at the branches that is going to merge.
+	- look baack along the branch's history to find a single commit that both branches have in their commit history.
+	- combine the lines of code that were changed on the seperate branches together.
+	- makes a commit to record the merge.
+# Fast forward Merge :
+	A fast forward merge will just move the currently checked out branch forward until it points to the same commit that the other branch is pointing to. To merge a branch in the current branch we use : git merge <name of  the branch to merge in>
+# Merge conflict : 
+	When a merge is performed and fails. If a merge conflict does occur, git will try to combine as much as it can, but then it will leave special markers and tells the user to where he needs to manually fis it.
+# What cause a merge conflict :  
+	A merge conflict will happen when the exact same line(s) are changed in separate branches.
+# Resolving a merge conflict :
+	git will pause mid-merge telling you that there is a conflict and will tell user in what file or files the conflict occured. To resolve the  conflict in a file :
+		- open the file in editor.
+		- locate and remove all lines with merge conflict indicators.
+		- determine what to keep.
+		- save the file(s).
+		- stage the file(s).
+		- make the commit.
+
+
+
+# TO UNDO CHANGES IN THE COMMITS.
+
+# git commit --amend : alter the most recent commit.
+	- edit the file.
+	- save the file.
+	- stage the file.
+	- use git commit --ammend.
+# git revert <SHA> :  Reverse given commit.
+# git reset : used to erase (reset) commit. It can be used to :
+	- move the HEAD and current branch pointer to the referenced commit.
+	- erase commits.
+	- move commited changes to the staging  index.
+	- unstage the commited changes.
+
+	$ git reset's flags are :
+		--mixed : unstage commited changes.
+		--soft : moves commited changes to the staging index.
+		--hard : erase commits.
+
+
+# RESET VS REVERT : 
+	Reverting creates a new commit that reverts or undos a previous commit.
+	Resetting on the other hand, erase commits.
+
+# Relative  commit reference :
+	There are special characters called "Ancestry References" that users can use to tell git about there relative references. Those characters are:
+	-    ^ : parent commit.
+	-    ~ : first parent commit.
+
+	Here's how we can refer to previous commits.
+	- parent commit:
+		HEAD^
+		HEAD~
+		HEAD~1
+	- grandparent commit : 
+		HEAD^^
+		HEAD~2
+	- great - grandparent commit :
+		HEAD^^^
+		HEAD~3
+
+	The main difference between ^ and ~ is when a commit is created from a merge. A merge commit has two parents. With a merge commit, the ^ reference is used to indicate the first parent of the commit, while ^2 indicate the second parent.
+
+	* The first parent is the branch you were on when you run git merge while the second parent is the branch that was merged in.
+
+
+
+
+######### SOURCE :   https://classroom.udacity.com/courses/ud123
