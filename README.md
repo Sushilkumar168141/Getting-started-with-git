@@ -1,4 +1,4 @@
-# hello-world
-first use of github
-Hello everyone, i am just a newbie to github.
-so please help me to get familiar with github and make use of it in my life.
+# Getting started with Git
+Hello everyone!
+Here are some documentation on how to install git and how to use git commands.
+i hope it will be useful for someone like me who is just looking to learn git.
